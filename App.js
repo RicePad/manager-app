@@ -7,12 +7,18 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import reducers from './src/reducers';
 
+const store = createStore(reducers);
+console.log('store.getState()', store.getState())
+
+
 export default class App extends Component<Props> {
   render() {
     return (
-      <View>
-        <Header headerText="Manager App" />
-      </View>
+      <Provider store={store}>
+        <View>
+          <Header headerText="Manager App" />
+        </View>
+      </Provider>
     );
   }
 }
