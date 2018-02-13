@@ -28,7 +28,6 @@ export function passwordChanged(text){
 }
 
 
-
 // This action creator returns a func using redux thunk, enabling dispatch func to handle manually asynchronous request.
 export const loginUser = ({ email, password }) => {
   return (dispatch) => {
@@ -46,14 +45,14 @@ export const loginUser = ({ email, password }) => {
   };
 };
 
-const loginUserFail = (dispatch) => {
-  dispatch({ type: LOGIN_USER_FAIL });
-};
+		const loginUserFail = (dispatch) => {
+		  dispatch({ type: LOGIN_USER_FAIL });
+		};
 
-const loginUserSuccess = (dispatch, user) => {
-  dispatch({
-    type: LOGIN_USER_SUCCESS,
-    payload: user
-  });
+		const loginUserSuccess = (dispatch, user) => {
+		  dispatch({
+		    type: LOGIN_USER_SUCCESS,
+		    payload: user
+		  });
 
-};
+		};

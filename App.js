@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 import Header from './src/components/Header';
 import LoginForm from './src/components/LoginForm';
+import RouterComponent from './RouterComponent';
 
 
 // Redux Setup
@@ -29,10 +30,7 @@ class App extends Component<Props> {
   render() {
     return (
       <Provider store={store}>
-        <View>
-          <Header headerText="Manager App" />
-          <LoginForm />
-        </View>
+          <RouterComponent />
       </Provider>
     );
   }
