@@ -1,5 +1,8 @@
 import firebase from 'firebase';
 
+// provides a helper method to navigate to another component
+import { Actions } from 'react-native-router-flux';
+
 export const EMAIL_CHANGED = "EMAIL_CHANGED";
 export const PASSWORD_CHANGED = "PASSWORD_CHANGED";
 export const LOGIN_USER = "LOGIN_USER";
@@ -55,4 +58,6 @@ export const loginUser = ({ email, password }) => {
 		    payload: user
 		  });
 
+	//  helper method to navigate to another employeeList component
+		Actions.employeeList()
 		};
