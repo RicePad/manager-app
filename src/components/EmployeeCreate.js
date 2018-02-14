@@ -31,7 +31,8 @@ class EmployeeCreate extends Component{
 						onChangeText={(text) => this.props.employeeUpdate({ prop: 'phone', value: text})}
 						/>
 				</CardSection>
-				<CardSection>
+       			 <CardSection>
+					<Text style={styles.pickerTextStyle}>Shift</Text>
 					<Picker
 						style={{flex: 1}}
 						label="Shift"
@@ -65,5 +66,12 @@ function mapStateToProps(state){
 		shift: state.employeeForm.shift
 	}
 }
+
+const styles = {
+  pickerTextStyle: {
+    fontSize: 18,
+    paddingLeft: 20
+  }
+};
 
 export default connect( mapStateToProps, { employeeUpdate } )(EmployeeCreate);
