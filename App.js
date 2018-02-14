@@ -21,9 +21,12 @@ const store = createStore(reducers, {}, applyMiddleware(thunk));
 console.log('store.getState()', store.getState())
 
 
-class App extends Component<Props> {
-    componentWillMount(){
-     
+class App extends Component{
+    componentWillMount() {
+     var config = {
+    
+  };
+  firebase.initializeApp(config);
     }
   
 
