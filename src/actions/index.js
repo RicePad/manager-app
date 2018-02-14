@@ -59,5 +59,5 @@ export const loginUser = ({ email, password }) => {
 		  });
 
 	//  helper method to navigate to another employeeList component
-		Actions.employeeList()
+		Actions.main()
 		};
