@@ -2,7 +2,7 @@ import { EMAIL_CHANGED, PASSWORD_CHANGED, LOGIN_USER, LOGIN_USER_SUCCESS, LOGIN_
 
 
 const INITIAL_STATE = { 
-	email: '',
+	  email: '',
     password: '',
     user: null, 
     error: '',
