@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, Picker } from 'react-native';
 import Card from './Card';
 import CardSection from './CardSection';
 import Input from './Input';
@@ -12,7 +12,7 @@ class EmployeeCreate extends Component{
 	
 
 	render(){
-		console.log('this.props', this.props)
+		console.log('this.props', this.props.shift)
 		return(
 			<Card>
 				<CardSection>
@@ -23,19 +23,29 @@ class EmployeeCreate extends Component{
 						onChangeText={(text) => this.props.employeeUpdate({ prop: 'name', value: text })}
 					/>
 				</CardSection>
+				<CardSection>
 					<Input
 						label="Phone"
 						plaeholder="401-3390-440"
 						value={this.props.phone}
 						onChangeText={(text) => this.props.employeeUpdate({ prop: 'phone', value: text})}
 						/>
+				</CardSection>
 				<CardSection>
-					<Input
+					<Picker
+						style={{flex: 1}}
 						label="Shift"
-						placeholder="Monday 1-8"
-						value={this.props.shift}
-						onChangeText={(text) => this.props.employeeUpdate({prop: 'shift', value: text})}
-						/>
+						selectedValue={this.props.shift}
+						onValueChange={(date) => this.props.employeeUpdate({props: 'shift', value: date})}
+					>
+						  <Picker.Item label="Monday" value="Monday" />
+						  <Picker.Item label="Tuesday" value="Tuesday" />
+						  <Picker.Item label="Wednesday" value="Wednesday" />
+						  <Picker.Item label="Thursday" value="Thursday" />
+						  <Picker.Item label="Friday" value="Friday" />
+						  <Picker.Item label="Saturday" value="Saturday" />
+						  <Picker.Item label="Sunday" value="Sunday" />
+					</Picker>
 				</CardSection>
 
 				<CardSection>
