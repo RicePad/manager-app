@@ -5,12 +5,16 @@ import CardSection from './CardSection';
 import Input from './Input';
 import Button from './Button';
 import { connect } from 'react-redux';
-import { employeeUpdate } from '../actions';
+import { employeeUpdate, employeeCreate } from '../actions';
 
 
 class EmployeeCreate extends Component{
 	
+	onButtonPressed(){
+		const { name, phone, shift } = this.props;
 
+		this.props.employeeCreate({name, phone, shift: shift || 'Monday'});
+	}
 	render(){
 		console.log('this.props', this.props.shift)
 		return(
@@ -50,7 +54,9 @@ class EmployeeCreate extends Component{
 				</CardSection>
 
 				<CardSection>
-					<Button>Create</Button>
+					<Button
+						onPress={this.onButtonPressed.bind(this)}
+					>Create</Button>
 				</CardSection>
 			</Card>
 			)
@@ -74,4 +80,4 @@ const styles = {
   }
 };
 
-export default connect( mapStateToProps, { employeeUpdate } )(EmployeeCreate);
+export default connect( mapStateToProps, { employeeUpdate, employeeCreate } )(EmployeeCreate);
