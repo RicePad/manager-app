@@ -29,7 +29,6 @@ build/
 .gradle
 local.properties
 *.iml
-./secret.js
 # node.js
 #
 node_modules/
@@ -51,3 +50,7 @@ buck-out/
 */fastlane/report.xml
 */fastlane/Preview.html
 */fastlane/screenshots
+
+./secret.js
+
+
