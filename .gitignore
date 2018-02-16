@@ -51,6 +51,6 @@ buck-out/
 */fastlane/Preview.html
 */fastlane/screenshots
 
-./secret.js
+/secret.js
 
 
