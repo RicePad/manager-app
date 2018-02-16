@@ -17,7 +17,7 @@ class CardSection extends Component {
 const styles = {
   containerStyle: {
     borderBottomWidth: 1,
-    padding: 5,
+    padding: 30,
     backgroundColor: '#fff',
     justifyContent: 'flex-start',
     flexDirection: 'row',
