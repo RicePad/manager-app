@@ -1,4 +1,4 @@
-import { EMPLOYEE_UPDATE, EMPLOYEE_CREATE, EMPLOYEES_SAVE_SUCCESS } from '../actions/EmployeeActions';
+import { EMPLOYEE_UPDATE, EMPLOYEE_CREATE, EMPLOYEE_SAVE_SUCCESS } from '../actions/EmployeeActions';
 
 const INITIAL_STATE = {
 	name: '',
@@ -13,8 +13,8 @@ export default(state = INITIAL_STATE, action) => {
 			return {...state, [action.payload.prop] : action.payload.value };
 		case EMPLOYEE_CREATE: 
 			return INITIAL_STATE;
-		case EMPLOYEES_SAVE_SUCCESS: 
-			return INITIAL_STATE;
+		case EMPLOYEE_SAVE_SUCCESS:
+      		return INITIAL_STATE;
 		default: 
 			return state;
 	}

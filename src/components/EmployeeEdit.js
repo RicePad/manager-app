@@ -9,9 +9,17 @@ import EmployeeForm from './EmployeeForm';
 import { employeeUpdate, employeeSave } from '../actions';
 import { Actions } from 'react-native-router-flux'; 
 import Communications from 'react-native-communications';
+import Confirm from './Confirm'
 
 class EmployeeEdit extends Component {
-	
+	constructor(props){
+		super(props);
+			
+			this.state = {
+				showModal: false
+			
+		}
+	}
 
 	componentWillMount() {
 		//Employee model component model comes 
@@ -32,11 +40,11 @@ class EmployeeEdit extends Component {
    	    
    	    const { name, phone, shift } = this.props;
 
-   	    this.props.employeeSave({ name, phone, shift, uid: this.props.employee.uid })
+  		  this.props.employeeSave({ name, phone, shift, uid: this.props.employee.uid });
 
 	}
 
-	onTextButtonPresse(){
+	onTextButtonPressed(){
 		const {  phone, shift } = this.props;
 
 		Communications.text(phone, `Your upcoming shift is on ${shift}`);
@@ -51,8 +59,18 @@ class EmployeeEdit extends Component {
 				</CardSection>
 
 				<CardSection>
-					<Button onPress={this.onTextButtonPresse.bind(this)}>Send Schedule</Button>
+					<Button onPress={this.onTextButtonPressed.bind(this)}>Send Schedule</Button>
 				</CardSection>
+
+				<CardSection>
+					<Button onPress={() => this.setState({ showModal: !this.state.showModal })}>
+						Fire Employee
+					</Button>
+				</CardSection>
+
+				<Confirm visible={this.state.showModal}>
+					Are you sure you want to fire this employee?
+				</Confirm>
 			</Card>
 			)
 	}

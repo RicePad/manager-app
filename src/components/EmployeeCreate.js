@@ -11,18 +11,18 @@ import EmployeeForm from './EmployeeForm';
 
 class EmployeeCreate extends Component{
 	
-	onButtonPressed(){
-		const { name, phone, shift } = this.props;
+ onButtonPress() {
+    const { name, phone, shift } = this.props;
 
-		this.props.employeeCreate({name, phone, shift: shift || 'Monday'});
-	}
+    this.props.employeeCreate({ name, phone, shift: shift || 'Monday' });
+  }
 	render(){
 		return(
 			<Card>
 				<EmployeeForm {...this.props} />
 				<CardSection>
 					<Button
-						onPress={this.onButtonPressed.bind(this)}
+						onPress={this.onButtonPress.bind(this)}
 					>Create</Button>
 				</CardSection>
 			</Card>
