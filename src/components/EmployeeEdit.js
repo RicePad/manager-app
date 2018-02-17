@@ -33,7 +33,6 @@ class EmployeeEdit extends Component {
 
    	    this.props.employeeSave({ name, phone, shift, uid: this.props.employee.uid })
 
-   	    Actions.employeeList()
 
 		}
 
