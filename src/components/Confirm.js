@@ -4,15 +4,27 @@ import Card from './Card';
 import CardSection from './CardSection';
 import Button from './Button'
 
-const Confirm = () => {
+const Confirm = ({ children, visible, onAccept, onDecline }) => {
 	return(
-		<View>
-			<Card>
+		<Modal
+			visible={visible}
+			transparent
+			animationType="slide"
+			onRequestClose={() => {}}
+		>
+			<View>
 				<CardSection>
-					
+					<Text>{ children }</Text>
 				</CardSection>
-			</Card>
-		</View>
+
+				<CardSection>
+					<Button onPress={onAccept}> Yes </Button>
+					<Button onPress={onDecline}> No </Button>
+				</CardSection>
+
+
+			</View>
+		</Modal>
 		)
 }
 
