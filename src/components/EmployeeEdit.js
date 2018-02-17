@@ -8,6 +8,7 @@ import Button from './Button';
 import EmployeeForm from './EmployeeForm';
 import { employeeUpdate, employeeSave } from '../actions';
 import { Actions } from 'react-native-router-flux'; 
+import Communications from 'react-native-communications';
 
 class EmployeeEdit extends Component {
 	
@@ -33,8 +34,13 @@ class EmployeeEdit extends Component {
 
    	    this.props.employeeSave({ name, phone, shift, uid: this.props.employee.uid })
 
+	}
 
-		}
+	onTextButtonPresse(){
+		const {  phone, shift } = this.props;
+
+		Communications.text(phone, `Your upcoming shift is on ${shift}`);
+	}
 
 	render(){
 		return(
@@ -42,6 +48,10 @@ class EmployeeEdit extends Component {
 				<EmployeeForm />
 				<CardSection>
 					<Button onPress={this.onButtonPressed.bind(this)}>Save Changes</Button>
+				</CardSection>
+
+				<CardSection>
+					<Button onPress={this.onTextButtonPresse.bind(this)}>Send Schedule</Button>
 				</CardSection>
 			</Card>
 			)
