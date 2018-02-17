@@ -6,16 +6,19 @@ import Card from './Card'
 import CardSection from './CardSection';
 import Button from './Button';
 import EmployeeForm from './EmployeeForm';
-import { employeeUpdate } from '../actions';
+import { employeeUpdate, employeeSave } from '../actions';
+import { Actions } from 'react-native-router-flux'; 
 
 class EmployeeEdit extends Component {
 	
 
 	componentWillMount() {
-		//Employee model component model come 
+		//Employee model component model comes 
 		//into this component and iterate through every property
-		// of the object and updating the reducer.
-		//Note: it's prefilling values inside the reducer
+		// of the object and updates the reducer with new information.
+		
+		//Note: it's prefilling values inside the reducer to show exiting
+		//info
 
 	    _.each(this.props.employee, (value, prop) => {
 	      this.props.employeeUpdate({ prop, value });
@@ -23,9 +26,16 @@ class EmployeeEdit extends Component {
   }
 
 	onButtonPressed(){
+		//When button is pressed reducer is updated
+		//with new values
+   	    
    	    const { name, phone, shift } = this.props;
-		console.log(name, phone, shift)
-	}
+
+   	    this.props.employeeSave({ name, phone, shift, uid: this.props.employee.uid })
+
+   	    Actions.employeeList()
+
+		}
 
 	render(){
 		return(
@@ -49,4 +59,4 @@ function mapStateToProps(state){
 	}
 }	
 
-export default connect(mapStateToProps, { employeeUpdate })(EmployeeEdit);
+export default connect(mapStateToProps, { employeeUpdate, employeeSave })(EmployeeEdit);
