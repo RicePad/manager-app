@@ -6,7 +6,7 @@ import Card from './Card'
 import CardSection from './CardSection';
 import Button from './Button';
 import EmployeeForm from './EmployeeForm';
-import { employeeUpdate, employeeSave } from '../actions';
+import { employeeUpdate, employeeSave, deleteEmployee } from '../actions';
 import { Actions } from 'react-native-router-flux'; 
 import Communications from 'react-native-communications';
 import Confirm from './Confirm'
@@ -50,6 +50,17 @@ class EmployeeEdit extends Component {
 		Communications.text(phone, `Your upcoming shift is on ${shift}`);
 	}
 
+
+	onDecline(){
+		this.setState({ showModal: false});
+	}
+
+	onAccept(){
+		const { uid } = this.props.employee;
+
+		this.props.deleteEmployee({uid})
+	}
+
 	render(){
 		return(
 			<Card>
@@ -68,7 +79,10 @@ class EmployeeEdit extends Component {
 					</Button>
 				</CardSection>
 
-				<Confirm visible={this.state.showModal}>
+				<Confirm 
+					onDecline={this.onDecline.bind(this)}
+					onAccept={this.onAccept.bind(this)}
+					visible={this.state.showModal}>
 					Are you sure you want to fire this employee?
 				</Confirm>
 			</Card>
@@ -86,4 +100,4 @@ function mapStateToProps(state){
 	}
 }	
 
-export default connect(mapStateToProps, { employeeUpdate, employeeSave })(EmployeeEdit);
+export default connect(mapStateToProps, { employeeUpdate, employeeSave, deleteEmployee })(EmployeeEdit);
